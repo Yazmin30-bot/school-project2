@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Description" content="Enter your description here" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/c502137733.js"></script>
+	<title>Project Tracker</title>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<header class="hero">
+			<div>
+				<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+					<a class="navbar-brand" href="/">School System</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Visit</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">Programs</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown01">
+									<a class="dropdown-item" href="#">Undergraduate</a>
+									<a class="dropdown-item" href="#">Graduate</a>
+									<a class="dropdown-item" href="#">Certicates</a>
+									<a class="dropdown-item" href="#">Others</a>
+								</div>
+							</li>
+						</ul>
+						{{#if loggedIn}}
+						<button class="no-button" id="logout">logout</button>
+						{{else}}
+						<a class="btn btn-secondary" href="/studentlogin"><i class="fas fa-user-graduate fa-1x"></i> Login</a>
+						<a class="btn btn-secondary" href="/professorlogin"><i class="fas fa-chalkboard-teacher fa-1x"></i>Login</a>
+						{{/if}}
+					</div>
+				</nav>
+			</div>
+			<h1 class="app-title"><i class="fab "></i>The Tech Blog</h1>
+		</header>
+
+		<main>
+
+			{{{body}}}
+
+		</main>
+
+
+
+
+		<footer class="container py-5">
+			<div class="row">
+				<div class="col-12 col-md">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+						viewBox="0 0 24 24" focusable="false">
+						<title>Product</title>
+						<circle cx="12" cy="12" r="10" />
+						<path
+							d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+					</svg>
+					<small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+				</div>
+				<div class="col-6 col-md">
+					<h5>Features</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Cool stuff</a></li>
+						<li><a class="text-muted" href="#">Random feature</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5>Resources</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Resource</a></li>
+						<li><a class="text-muted" href="#">Resource name</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5>Resources</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Business</a></li>
+						<li><a class="text-muted" href="#">Education</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5>About</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Team</a></li>
+						<li><a class="text-muted" href="#">Locations</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<!-- Render script for logged in users only -->
+	{{#if logged_in}}
+	<script src="/js/logout.js"></script>
+	{{/if}}
+</body>
+
+</html>
