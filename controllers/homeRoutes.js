@@ -30,19 +30,8 @@ router.get('/', (req, res) => {
   }
 }); 
 
- router.get('/studentlogin', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/studentsubject');
-    return;
-  }
 
-  res.render('studentlogin');
-}); 
-
-
-
-/* router.get('/professorprofile', professorWithAuth, async (req, res) => {
+ router.get('/professorprofile', professorWithAuth, async (req, res) => {
   try {
     // Find the logged in professor based on the session ID
     const professorData = await Professor.findByPk(req.session.professor_id, {
@@ -61,6 +50,18 @@ router.get('/', (req, res) => {
   }
 });
 
+ router.get('/studentlogin', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/studentsubject');
+    return;
+  }
+
+  res.render('studentlogin');
+}); 
+
+
+
 router.get('/professorlogin', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -70,5 +71,8 @@ router.get('/professorlogin', (req, res) => {
 
   res.render('professorlogin');
 });
- */
+ 
+
+
+
 module.exports = router;

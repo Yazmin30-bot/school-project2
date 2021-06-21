@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const { Student } = require('../../models');
+const { Professor } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const studentData = await Student.create(req.body);
+    const professorData = await Professor.create(req.body);
 
     req.session.save(() => {
-      req.session.student_id = studentData.id;
+      req.session.professor_id = professorData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(studentData);
+      res.status(200).json(professorData);
     });
   } catch (err) {
     console.log(err);
@@ -19,16 +19,16 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const studentData = await Student.findOne({ where: { email: req.body.email } });
+    const professorData = await Professor.findOne({ where: { email: req.body.email } });
 
-    if (!studentData) {
+    if (!professorData) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
-    const validPassword = await studentData.checkPassword(req.body.password);
+    const validPassword = await professorData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -38,10 +38,10 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.student_id = studentData.id;
+      req.session.professor_id = professorData.id;
       req.session.logged_in = true;
-      res.status(200).json(studentData);
-      res.json({ student: studentData, message: 'You are now logged in!' });
+      
+      res.json({ professor: professorData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
